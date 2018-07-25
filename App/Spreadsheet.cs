@@ -19,7 +19,7 @@ namespace App
             _reversePolishNotation = new ReversePolishNotation();
             _maxSize = maxSize;
             Cells = new Cell[_maxSize,_maxSize];
-            for (int i = 0; i < _maxSize; i++)  //zamienic an forEachs
+            for (int i = 0; i < _maxSize; i++) 
             {
                 for (int j = 0; j < _maxSize; j++)
                 {

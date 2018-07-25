@@ -11,15 +11,16 @@ namespace App
         {
 
         }
+
         public string CoordinatesToCellExpression(Cell[,] cells, string coordinates)
         {
             char letter = coordinates[0];
             char number = coordinates[1];
             int row = letter - 'A'+1;
             int column = number - '0';
-
             return cells[row, column].getValue().ToString();
         }
+
         public void TransformNumbersOnlyExpressions(Cell[,] cells, int maxSize, ReversePolishNotation reversePolishNotation)
         {
             Cell cell = new Cell();
@@ -44,6 +45,7 @@ namespace App
                 }
             }
         }
+
         public double CalculateExpressionWithCoordinates(string expression, Cell[,] cells, ReversePolishNotation reversePolishNotation)
         {
             string transformatedExpression = "";
@@ -59,9 +61,9 @@ namespace App
                     transformatedExpression += CoordinatesToCellExpression(cells, part);
                 }
             }
-
             return reversePolishNotation.Calculate((transformatedExpression));
         }
+
         public void TransformCellsWithCoordinates(Cell[,] cells, int maxSize, ReversePolishNotation reversePolishNotation)
         {
             for (int i = 1; i < maxSize; i++)

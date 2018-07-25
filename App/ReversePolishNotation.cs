@@ -63,7 +63,7 @@ namespace App
                         expressionInOnpNotation[expressionInOnpNotationSize] = stack.Pop().ToString();
                         expressionInOnpNotationSize++;
                     }
-                    stack.Pop(); // pobierz nawias otwierajacy ze stosu - trzeba się go pozbyć
+                    stack.Pop(); // We need to delete '(' from stack
                 }
                 else
                 {
@@ -136,9 +136,7 @@ namespace App
             _expressionInInfixationNotation = DivideExpressionOnParts(expression);
             _expressionInOnpNotation = InfixationNotationToOnp(_expressionInInfixationNotation);
             _expressionInOnpNotation = _expressionInOnpNotation.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            double result = CalculateValueFromOnp(_expressionInOnpNotation);
-
-            return result;
+            return CalculateValueFromOnp(_expressionInOnpNotation);
         }
     }
 
