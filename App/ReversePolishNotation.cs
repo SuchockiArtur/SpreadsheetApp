@@ -67,7 +67,6 @@ namespace App
                 }
                 else
                 {
-                    Console.WriteLine(part);
                     if ((stack.Count == 0) || (_priority[part] > GetPriorityOfLastSign(stack)))
                     {
                         stack.Push(part);
@@ -81,7 +80,6 @@ namespace App
                         }
                         stack.Push(part);
                     }
-
                 }
             }
             while (stack.Count != 0)
@@ -108,7 +106,8 @@ namespace App
                             stack.Push(result);
                             break;
                         case "-":
-                            Console.WriteLine("Case 2");
+                            result = Convert.ToDouble(stack.Pop()) - Convert.ToDouble(stack.Pop());
+                            stack.Push(result);
                             break;
                         case "*":
                             result = Convert.ToDouble(stack.Pop()) * Convert.ToDouble(stack.Pop());

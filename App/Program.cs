@@ -12,8 +12,6 @@ namespace App
         {
             Spreadsheet spreadsheet = new Spreadsheet(Constants.MaxSize);
             spreadsheet.Start();
-
-            Console.ReadKey();
         }
     }
 }

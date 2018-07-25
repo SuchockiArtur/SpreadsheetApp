@@ -8,12 +8,14 @@ namespace App
     {
         private Cell[,] Cells { get; set; }
         private readonly int _maxSize;
-        private Communicator _communicator;
-        private ReversePolishNotation _reversePolishNotation;
+        private readonly Communicator _communicator;
+        private readonly Transformator _transformator;
+        private readonly ReversePolishNotation _reversePolishNotation;
 
         public Spreadsheet(int maxSize)
         {
             _communicator = new Communicator();
+            _transformator = new Transformator();
             _reversePolishNotation = new ReversePolishNotation();
             _maxSize = maxSize;
             Cells = new Cell[_maxSize,_maxSize];
@@ -29,9 +31,9 @@ namespace App
         public void Start()
         {
             _communicator.LoadInitialState(Cells, _maxSize);
-
-//            string expression = "93 + 1 * (2* 3+10/5)";
-//            _reversePolishNotation.Calculate(expression);
+            _transformator.TransformExpressionsToValues(Cells, _maxSize, _reversePolishNotation);
+            _communicator.PrintSpreadsheetValues(Cells, _maxSize);
+            _communicator.StartDialogWithUser(Cells, _reversePolishNotation, _transformator, _maxSize);
         }
 
     }

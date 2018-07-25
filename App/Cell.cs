@@ -7,12 +7,22 @@ namespace App
     class Cell
     {
         private string Expression { get; set; }
-        private int? Value;
+        private double Value { get; set; }
 
         public Cell()
         {
             Expression = null;
-            Value = null;
+            Value =0;
+        }
+
+        public void SetValue(double newValue)
+        {
+            Value = newValue;
+        }
+
+        public double getValue()
+        {
+            return this.Value;
         }
 
         public void SetExpression(string newExpression)
